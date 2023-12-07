@@ -2,12 +2,15 @@
   "name": "fake-shop",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://darrionn33.github.io/fake-shop/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "framer-motion": "^10.16.14",
