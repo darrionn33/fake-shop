@@ -1,16 +1,17 @@
+import Category from "./Category";
+
 export default function Main(props) {
   return (
     <main>
       <div className="carousel"></div>
       {props.categories.map((category) => (
-        <div id={category} className="category" key={category}>
-          <h1>{category}</h1>
-          <div className="items">
-            <div className="item"></div>
-            <div className="item"></div>
-            <div className="item"></div>
-          </div>
-        </div>
+        <Category
+          key={category}
+          category={category}
+          products={props.products.filter(
+            (product) => product.category === category
+          )}
+        />
       ))}
     </main>
   );

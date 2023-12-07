@@ -5,7 +5,16 @@ export default function Sidebar(props) {
       {props.categories.map((category) => (
         <a href={"#" + category} key={category}>
           <h3>
-            {category} <span>({Math.floor(Math.random() * 30) + 9})</span>
+            {category}{" "}
+            <span>
+              (
+              {
+                props.products.filter(
+                  (product) => product.category === category
+                ).length
+              }
+              )
+            </span>
           </h3>
         </a>
       ))}
