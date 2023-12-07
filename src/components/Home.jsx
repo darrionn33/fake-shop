@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Sidebar from "./components/Sidebar";
-import Context from "./context";
-import Loading from "./components/Loading";
+import Main from "./Main";
+import Sidebar from "./Sidebar";
+import Loading from "./Loading";
 
 function Home() {
   const [categories, setCategories] = useState([]);
@@ -26,21 +24,16 @@ function Home() {
       .catch((err) => console.log(err));
   }, []);
 
-  const [cart, setCart] = useState([]);
-  
   return (
     <div className="home">
-      <Context.Provider value={{ cart, setCart }}>
-        <Header cart={cart} />
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
-            <Main categories={categories} products={products} />
-            <Sidebar categories={categories} products={products} />
-          </>
-        )}
-      </Context.Provider>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Main categories={categories} products={products} />
+          <Sidebar categories={categories} products={products} />
+        </>
+      )}
     </div>
   );
 }

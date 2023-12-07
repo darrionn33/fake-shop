@@ -21,7 +21,36 @@ button {
   @mixin minh {
     max-width: 100dvw;
     min-height: 100dvh;
-    // overflow: hidden;
+  }
+  header {
+    height: 70px;
+    position: fixed;
+    top: 0;
+    background: #000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      color: white;
+    }
+    .cart {
+      position: absolute;
+      right: 25px;
+      top: 30%;
+      font-size: 25px;
+      cursor: pointer;
+    }
+    .count {
+      position: absolute;
+      right: 8px;
+      font-size: 15px;
+      top: 50%;
+      color: white;
+      background-color: maroon;
+      padding: 0px 5px;
+      border-radius: 50%;
+    }
   }
   .loading {
     position: absolute;
@@ -38,37 +67,9 @@ button {
     @include minh;
     display: grid;
     grid-template-columns: 250px 1fr;
-    grid-template-rows: 70px 1fr;
-    grid-template-areas:
-      "header header"
-      "sidebar main";
-    header {
-      position: relative;
-      grid-area: header;
-      background: #000;
-      width: 100%;
-      display: grid;
-      place-items: center;
-      h1 {
-        color: white;
-      }
-      .cart {
-        position: absolute;
-        right: 20px;
-        top: 30%;
-        font-size: 30px;
-      }
-      .count {
-        position: absolute;
-        right: 8px;
-        font-size: 20px;
-        top: 50%;
-        color: white;
-        background-color: maroon;
-        padding: 0px 5px;
-        border-radius: 50%;
-      }
-    }
+    grid-template-areas: "sidebar main";
+    padding-top: 70px;
+
     main {
       grid-area: main;
       overflow-y: scroll;
