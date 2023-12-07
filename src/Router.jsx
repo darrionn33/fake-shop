@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App";
+import Home from "./Home";
 export default function Router() {
   const router = createBrowserRouter([
     {
@@ -7,7 +7,7 @@ export default function Router() {
       children: [
         {
           index: true,
-          element: <App />,
+          element: <Home />,
         },
       ],
     },
