@@ -75,8 +75,64 @@ button {
       overflow-y: scroll;
       max-height: calc(100dvh - 70px);
       .carousel {
+        position: relative;
         height: 300px;
-        background: darkcyan;
+        margin: 20px;
+        overflow: hidden;
+        button {
+          z-index: 10;
+          position: absolute;
+          height: 100%;
+          width: 50px;
+          background-color: black;
+          opacity: 0.2;
+          color: white;
+          transition: opacity 0.3s;
+          &:hover {
+            opacity: 1;
+          }
+          &:nth-child(1) {
+            left: 0;
+          }
+          &:nth-child(2) {
+            right: 0;
+          }
+        }
+
+        .img_div {
+          $imgWidth: 250px;
+          inset: 0;
+          position: absolute;
+          display: grid;
+          grid-template-columns: $imgWidth 1fr;
+          align-items: flex-end;
+          padding: 30px 80px;
+          gap: 20px;
+          img {
+            width: $imgWidth;
+            height: $imgWidth;
+          }
+          h3 {
+            position: relative;
+            align-self: flex-start;
+            text-wrap: balance;
+            font-size: 40px;
+          }
+          button {
+            background-color: purple;
+            top: 120%;
+            opacity: 1;
+            height: 50px;
+            width: min(150px, 50%);
+            background-color: rgb(165, 113, 165);
+            border-radius: 10px;
+            color: white;
+            font-size: large;
+            &:hover {
+              background-color: rgb(185, 127, 185);
+            }
+          }
+        }
       }
       .category {
         padding: 20px;

@@ -1,9 +1,10 @@
 import Category from "./Category";
+import Carousel from "./Carousel";
 
 export default function Main(props) {
   return (
     <main>
-      <div className="carousel"></div>
+      <Carousel products={props.products} />
       {props.categories.map((category) => (
         <Category
           key={category}
