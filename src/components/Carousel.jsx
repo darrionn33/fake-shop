@@ -34,15 +34,15 @@ export default function Carousel(props) {
     });
   };
 
-    useEffect(() => {
-      const x = setInterval(() => {
-        next();
-      }, 5000);
+  useEffect(() => {
+    const x = setInterval(() => {
+      next();
+    }, 5000);
 
-      return () => {
-        clearInterval(x);
-      };
-    }, []);
+    return () => {
+      clearInterval(x);
+    };
+  }, []);
 
   return (
     <div className="carousel">
@@ -70,11 +70,7 @@ export default function Carousel(props) {
             alt="product-image"
             draggable="false"
           />
-          <h3>
-            {props.products[state.index].title.substring(0, 60)}
-            {props.products[state.index].title.length > 60 ? "..." : ""}
-            <AddCartButton item={props.products[state.index]} />
-          </h3>
+          <AddCartButton item={props.products[state.index]} />
         </motion.div>
       </AnimatePresence>
     </div>
