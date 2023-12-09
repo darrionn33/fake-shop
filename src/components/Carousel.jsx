@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddCartButton from "./AddCartButton";
 export default function Carousel(props) {
   const [state, setState] = useState({ index: 0, direction: "for" });
@@ -44,6 +44,18 @@ export default function Carousel(props) {
     };
   }, []);
 
+  const dragRef = useRef({ x1: 0, x2: 0 });
+  const decide = () => {
+    const { x1, x2 } = dragRef.current;
+
+    if (Math.max(x1, x2) - Math.min(x1, x2) > 70) {
+      if (x1 > x2) {
+        next();
+      } else {
+        prev();
+      }
+    }
+  };
   return (
     <div className="carousel">
       <button onClick={prev}>
@@ -61,6 +73,15 @@ export default function Carousel(props) {
             state.direction === "for" ? "enterForward" : "enterBackwards"
           }
           exit={state.direction === "for" ? "exitForward" : "exitBackwards"}
+          drag="x"
+          dragSnapToOrigin
+          onDragStart={(e, info) => {
+            dragRef.current.x1 = info.point.x;
+          }}
+          onDragEnd={(e, info) => {
+            dragRef.current.x2 = info.point.x;
+            decide();
+          }}
         >
           <img
             onContextMenu={(e) => {
