@@ -114,6 +114,7 @@ button {
             height: $imgWidth;
           }
           button {
+            justify-self: start;
             background-color: purple;
             opacity: 1;
             padding: 20px 30px;
