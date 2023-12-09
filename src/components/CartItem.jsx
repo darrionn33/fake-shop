@@ -35,7 +35,8 @@ export default function CartItem(props) {
                 tmp[props.index].quantity = tmp[props.index].quantity - 1;
                 return tmp;
               }
-              return items;
+              tmp.splice(props.index, 1);
+              return tmp;
             });
           }}
         >
