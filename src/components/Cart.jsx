@@ -12,30 +12,22 @@ export default function Cart() {
       {cart.length > 0 ? (
         <div className="container">
           <h1>Cart</h1>
-          <table>
-            <tbody>
-              <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total Price</th>
-              </tr>
-              {cart.map((item, index) => {
-                if (item.quantity > 0) {
-                  return <CartItem item={item} key={item.id} index={index} />;
-                }
-              })}
-              <tr>
-                <td colSpan="3">TOTAL</td>
-                <td>
-                  $
-                  {cart.reduce((total, item) => {
-                    return total + item.price * item.quantity;
-                  }, 0)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          {cart.map((item, index) => {
+            if (item.quantity > 0) {
+              return <CartItem item={item} key={item.id} index={index} />;
+            }
+          })}
+          <div className="total">
+            <h2>TOTAL</h2>
+            <p>
+              $
+              {Math.floor(
+                cart.reduce((total, item) => {
+                  return total + item.price * item.quantity;
+                }, 0)
+              )}
+            </p>
+          </div>
         </div>
       ) : (
         <div className="empty">
